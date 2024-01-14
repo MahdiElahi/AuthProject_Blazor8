@@ -3,3 +3,6 @@
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
+<AuthorizeView>
+    Hello @context.User.Identity?.Name!, Looks like you're authorized and this application is working.
+</AuthorizeView>
