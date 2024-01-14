@@ -6,8 +6,6 @@
 @using Microsoft.AspNetCore.Identity
 @using ForumProject.Data
 
-@rendermode InteractiveServer
-
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
@@ -26,23 +24,27 @@
                         <h5 class="mb-0">Sign In</h5> <small class="text-body float-end">Default label</small>
                     </div>
                     <div class="card-body">
+                        <!-- you're missing the StatusMessage in your project -->
+                        <StatusMessage Message="@errorMessage" />
+                        
                         <EditForm Model="Input" FormName="book-form" OnValidSubmit="LoginUser">
-                            <DataAnnotationsValidator />
+                            <DataAnnotationsValidator/>
+
                             <div class="row g-4">
                                 <div class="col-md-4">
                                     <div class="form-floating mb-4 ">
-                                        <InputText @bind-Value="Input.Username" type="text" class="form-control" id="floatingInputFilled" placeholder="username ..." />
+                                        <InputText @bind-Value="Input.Username" type="text" class="form-control" id="floatingInputFilled" placeholder="username ..."/>
                                         <label for="floatingInputFilled">Username</label>
                                         <span class="form-floating-focused"></span>
-                                        <ValidationMessage For="@(() => Input.Username)" />
+                                        <ValidationMessage For="@(() => Input.Username)"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating mb-4 ">
-                                        <InputText @bind-Value="Input.Password" type="text" class="form-control" id="floatingInputFilled" placeholder="password ..." />
+                                        <InputText @bind-Value="Input.Password" type="password" class="form-control" id="floatingInputFilled" placeholder="password ..."/>
                                         <label for="floatingInputFilled">Password</label>
                                         <span class="form-floating-focused"></span>
-                                        <ValidationMessage For="@(() => Input.Password)" />
+                                        <ValidationMessage For="@(() => Input.Password)"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
